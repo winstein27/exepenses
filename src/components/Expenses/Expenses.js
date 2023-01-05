@@ -1,4 +1,4 @@
-import './Expenses.css';
+import styles from './Expenses.module.css';
 
 import { useState } from 'react';
 
@@ -19,7 +19,7 @@ const Expenses = (props) => {
     );
 
     return (
-        <Card className="expenses">
+        <Card className={styles.expenses}>
             <ExpensesFilter onFilterChange={filterHandler} />
             <ExpensesChart expenses={filteredExpenses} />
             <ExpensesList expenses={filteredExpenses} />
