@@ -7,12 +7,12 @@ import ExpenseForm from './ExpenseForm';
 const NewExpense = (props) => {
     const [showForm, setShowForm] = useState(false);
 
-    const saveExpenseHandler = enteredExpense => {
+    const saveExpenseHandler = (enteredExpense) => {
         const newExpense = {
             id: Math.random().toString(),
             title: enteredExpense.enteredTitle,
             amount: Number.parseFloat(enteredExpense.enteredAmount),
-            date: new Date(enteredExpense.enteredDate)
+            date: new Date(enteredExpense.enteredDate),
         };
 
         props.onAddExpense(newExpense);
@@ -25,12 +25,19 @@ const NewExpense = (props) => {
 
     const openFormHandler = () => {
         setShowForm(true);
-    }
+    };
 
     return (
-        <div className='new-expense'>
-            {!showForm && <button onClick={openFormHandler}>Add New Expense</button>}
-            {showForm && <ExpenseForm  onSaveExpense={saveExpenseHandler} onCancel={closeFormHandler} />}
+        <div className="new-expense">
+            {!showForm && (
+                <button onClick={openFormHandler}>Add New Expense</button>
+            )}
+            {showForm && (
+                <ExpenseForm
+                    onSaveExpense={saveExpenseHandler}
+                    onCancel={closeFormHandler}
+                />
+            )}
         </div>
     );
 };
