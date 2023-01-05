@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import ExpensesFilter from '../ExpensesFilter/ExpensesFilter';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
 import Card from '../UI/Card';
 
 const Expenses = (props) => {
@@ -13,14 +14,15 @@ const Expenses = (props) => {
         setFilterYear(year);
     };
 
-    const FilteredExpenses = props.expenses.filter(
+    const filteredExpenses = props.expenses.filter(
         (expense) => expense.date.getFullYear().toString() === filterYear
     );
 
     return (
         <Card className="expenses">
             <ExpensesFilter onFilterChange={filterHandler} />
-            <ExpensesList expenses={FilteredExpenses} />
+            <ExpensesChart expenses={filteredExpenses} />
+            <ExpensesList expenses={filteredExpenses} />
         </Card>
     );
 };
